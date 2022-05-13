@@ -7,11 +7,28 @@ namespace currencyConvertor
 {
     public static class Program
     {
+
+        class Conversion
+        {
+            public Conversion(double beforeConversion, double afterConversion)
+            {
+                BeforeConversion = beforeConversion;
+                AfterConverion = afterConversion;
+            }
+
+            public double BeforeConversion { get; set; }
+            public double AfterConverion { get; set; }
+        }
+
+        public static void CurrencyConversion()
+        {
+
+        }
         public static void Main(string[] args)
         {
             // Réglages de couleurs de la console
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             // Définir les valeurs par rapport a l'USD
             double EUR = 0.95;
@@ -56,15 +73,19 @@ namespace currencyConvertor
 
                 // Menu de séléction 
                 Console.WriteLine("");
-                Console.WriteLine("1: Fermer la console");
+                Console.WriteLine("Entrer : Fermer la console");
+                Console.WriteLine("Espace : Aller a la calculatrice de conversion");
                 Console.WriteLine("=======================");
 
-                int selectionMonnaies = Convert.ToInt32(Console.ReadLine());
-
-                // Fermer la console
-                if(selectionMonnaies == 1)
+                while (Console.ReadKey().Key != ConsoleKey.Enter || Console.ReadKey().Key != ConsoleKey.Spacebar)
                 {
-                    Environment.Exit(0);
+                    Console.SetCursorPosition(0, Console.CursorTop - 2);
+                    Console.WriteLine("Appuyez sur entrer pour fermer la console");
+                    Console.WriteLine("Appuyez sur espace pour aller a la calculatrice de conversion");
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                    {
+                        Environment.Exit(0);
+                    }
                 }
             }
             else if (optionSelection == 2)
